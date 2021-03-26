@@ -154,25 +154,29 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
         for i in range(3, number_of_words):
             chance = random.random()
             if chance <= chance1:
+                print(1, HMM)
                 HMM.append(GenerateString(first_string=HMM[-1], window=1, number_of_words=1).split()[-1])
             elif chance <= chance1 + chance2:
+                print(2, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-2], second_string=HMM[-1],
                                    window=2, number_of_words=2).split()[-1])
             elif chance <= chance1 + chance2 + chance3:
+                print(3, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-3], second_string=HMM[-2], third_string=HMM[-1], window=3,
                                    number_of_words=3).split()[-1])
             else:
+                print(4, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-4], second_string=HMM[-3], third_string=HMM[-2],
-                                   fourth_string=HMM[-1], window=3, number_of_words=3).split()[-1])
+                                   fourth_string=HMM[-1], window=3, number_of_words=4).split()[-1])
         HMM = " ".join(HMM)
         return HMM
 
 
 # print(GenerateString("i", window=1, number_of_words=15))
-# print(GenerateString("i", second_string="have", window=2, number_of_words=2))
-# print(GenerateString("i", second_string="want", third_string="to", window=3, number_of_words=3))
-print(GenerateString("i", window=4, number_of_words=10))
-# print(GenerateString("i", number_of_words=15, combinate=True))
+# print(GenerateString("i", window=2, number_of_words=10))
+# print(GenerateString("i", window=3, number_of_words=3))
+# print(GenerateString("i", window=4, number_of_words=10))
+print(GenerateString("i", number_of_words=15, combinate=True))
