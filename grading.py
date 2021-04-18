@@ -3,7 +3,7 @@ import generator
 
 # import workwithfiles
 
-model = kenlm.Model('full_text.binary')
+model = kenlm.Model('full_text_for_score.binary')
 
 tmp = "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx"
 print(tmp)
