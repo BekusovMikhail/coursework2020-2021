@@ -24,7 +24,7 @@ tmp = "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx"
 print_scores_from_all_models(tmp)
 print("--------------------------------------------------------------------", end='\n\n')
 
-for i in ["hi", "i", "you", "hello", "game", "not", "he", "she", "it"]:
+for i in ["do", "fly", "make", "speak", "call", "open", "start", "work", "use"]:
     print("window_1")
     tmp = generator.GenerateString(i, window=1, number_of_words=10)
     print_scores_from_all_models(tmp)

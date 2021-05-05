@@ -55,7 +55,7 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
             probs = parsprobs("probsoutput_1word")
 
             HMM = [first_string]
-            for i in range(number_of_words):
+            for i in range(number_of_words - 1):
                 flag = 0
                 while flag == 0:
                     try:
@@ -74,9 +74,9 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
             probs = parsprobs("probsoutput_2word")
 
             if not second_string:
-                second_string = GenerateString(first_string, window=1, number_of_words=1).split()[-1]
+                second_string = GenerateString(first_string, window=1, number_of_words=2).split()[-1]
             HMM = [first_string, second_string]
-            for i in range(1, number_of_words):
+            for i in range(1, number_of_words - 1):
                 flag = 0
                 # tmp = sorted(list(probs[(HMM[i - 1], HMM[i])].items()), key=lambda x: x[1], reverse=True)[0][0]
                 while flag == 0:
@@ -96,11 +96,11 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
             probs = parsprobs("probsoutput_3word")
 
             if not second_string:
-                second_string = GenerateString(first_string, window=1, number_of_words=1).split()[-1]
+                second_string = GenerateString(first_string, window=1, number_of_words=2).split()[-1]
             if not third_string:
-                third_string = GenerateString(first_string, second_string, window=2, number_of_words=2).split()[-1]
+                third_string = GenerateString(first_string, second_string, window=2, number_of_words=3).split()[-1]
             HMM = [first_string, second_string, third_string]
-            for i in range(2, number_of_words):
+            for i in range(2, number_of_words - 1):
                 flag = 0
                 while flag == 0:
                     try:
@@ -119,14 +119,14 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
         elif window == 4:
             probs = parsprobs("probsoutput_4word")
             if not second_string:
-                second_string = GenerateString(first_string, window=1, number_of_words=1).split()[-1]
+                second_string = GenerateString(first_string, window=1, number_of_words=2).split()[-1]
             if not third_string:
-                third_string = GenerateString(first_string, second_string, window=2, number_of_words=2).split()[-1]
+                third_string = GenerateString(first_string, second_string, window=2, number_of_words=3).split()[-1]
             if not fourth_string:
                 fourth_string = GenerateString(first_string, second_string, third_string, window=3,
-                                               number_of_words=3).split()[-1]
+                                               number_of_words=4).split()[-1]
             HMM = [first_string, second_string, third_string, fourth_string]
-            for i in range(3, number_of_words):
+            for i in range(3, number_of_words - 1):
                 flag = 0
                 while flag == 0:
                     try:
@@ -144,39 +144,39 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
 
     else:
         if not second_string:
-            second_string = GenerateString(first_string, window=1, number_of_words=1).split()[-1]
+            second_string = GenerateString(first_string, window=1, number_of_words=2).split()[-1]
         if not third_string:
-            third_string = GenerateString(first_string, second_string, window=2, number_of_words=2).split()[-1]
+            third_string = GenerateString(first_string, second_string, window=2, number_of_words=3).split()[-1]
         if not fourth_string:
             fourth_string = GenerateString(first_string, second_string, third_string, window=3,
-                                           number_of_words=3).split()[-1]
+                                           number_of_words=4).split()[-1]
         HMM = [first_string, second_string, third_string, fourth_string]
         for i in range(3, number_of_words):
             chance = random.random()
             if chance <= chance1:
                 # print(1, HMM)
-                HMM.append(GenerateString(first_string=HMM[-1], window=1, number_of_words=1).split()[-1])
+                HMM.append(GenerateString(first_string=HMM[-1], window=1, number_of_words=2).split()[-1])
             elif chance <= chance1 + chance2:
                 # print(2, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-2], second_string=HMM[-1],
-                                   window=2, number_of_words=2).split()[-1])
+                                   window=2, number_of_words=3).split()[-1])
             elif chance <= chance1 + chance2 + chance3:
                 # print(3, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-3], second_string=HMM[-2], third_string=HMM[-1], window=3,
-                                   number_of_words=3).split()[-1])
+                                   number_of_words=4).split()[-1])
             else:
                 # print(4, HMM)
                 HMM.append(
                     GenerateString(first_string=HMM[-4], second_string=HMM[-3], third_string=HMM[-2],
-                                   fourth_string=HMM[-1], window=3, number_of_words=4).split()[-1])
+                                   fourth_string=HMM[-1], window=4, number_of_words=5).split()[-1])
         HMM = " ".join(HMM)
         return HMM
 
 
-# print(GenerateString("i", window=1, number_of_words=15))
-# print(GenerateString("i", window=2, number_of_words=10))
-# print(GenerateString("i", window=3, number_of_words=10))
-# print(GenerateString("i", window=4, number_of_words=10))
-# print(GenerateString("i", number_of_words=15, combinate=True))
+# print(GenerateString("i", window=1, number_of_words=6))
+# print(GenerateString("hi", window=2, number_of_words=6))
+# print(GenerateString("i", window=3, number_of_words=6))
+# print(GenerateString("i", window=4, number_of_words=6))
+print(GenerateString("it", number_of_words=6, combinate=True))
