@@ -49,7 +49,7 @@ genprobs = {}
 
 
 def GenerateString(first_string, second_string="", third_string="", fourth_string="", window=1, number_of_words=10,
-                   combinate=False, chance1=0.7, chance2=0.15, chance3=0.45):
+                   combinate=False, chance1=0.7, chance2=0.15, chance3=0.15):
     if not combinate:
         if window == 1:
             probs = parsprobs("probsoutput_1word")
@@ -179,4 +179,4 @@ def GenerateString(first_string, second_string="", third_string="", fourth_strin
 # print(GenerateString("hi", window=2, number_of_words=6))
 # print(GenerateString("i", window=3, number_of_words=6))
 # print(GenerateString("i", window=4, number_of_words=6))
-print(GenerateString("it", number_of_words=6, combinate=True))
+# print(GenerateString("it", number_of_words=6, combinate=True))
