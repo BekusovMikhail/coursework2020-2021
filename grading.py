@@ -20,7 +20,9 @@ def print_scores_from_all_models(string):
     print_score(string, file_for_model='text_score_4.binary')
 
 
-tmp = "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx"
+tmp = "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx"
+print_scores_from_all_models(tmp)
+tmp = "The wife had discovered that the husband was carrying on"
 print_scores_from_all_models(tmp)
 print("--------------------------------------------------------------------", end='\n\n')
 

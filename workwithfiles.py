@@ -9,9 +9,7 @@ def tokenize(text):
     text = [word.lower() for word in words if
             (re.findall(r'\b[A-Za-z]+\b', word) and word.isalpha()) or
             word == '.' or
-            word == ',' or
-            word == '!' or
-            word == '?'
+            word == ','
             ]
     return text
 
